@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.scrollable {
+  overflow-y: scroll;          /* allow vertical scroll */
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE 10+ */
+}
+
+.scrollable::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Opera */
+}
