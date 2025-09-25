@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 import cors from "cors";
 
 const app = express();
-app.use(cors({ origin: ["http://localhost:5173", "https://chat-app-henna-sigma.vercel.app"],
+app.use(cors({ origin: ["http://localhost:5173", "https://chat-app-henna-sigma.vercel.app", ["https://chat-nn7j2ztwe-kainnikhils-projects.vercel.app/"]],
   methods: ["GET", "POST"],}));
 
 const server = http.createServer(app);
@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
 
   // Send message
   socket.on("sendMessage", ({ user, room, text }) => {
-    io.to(room).emit("receiveMessage", { user, text });
+    socket.broadcast.to(room).emit("receiveMessage", { user, text });
   });
 
   // Typing
