@@ -20,17 +20,14 @@ function App() {
     setChat((prev) => [...prev, data]);
   };
 
-  const handleUserLeft = (username) => {
-    setTypingUsers(prev => prev.filter(u => u !== username));
-    setChat((prev) => [...prev, { user: "System", text: `${username} has left the chat` }]);
-  };
+  
 
   socket.on("receiveMessage", handleReceiveMessage);
-  socket.on("user-left", handleUserLeft);
+  
 
   return () => {
     socket.off("receiveMessage", handleReceiveMessage);
-    socket.off("user-left", handleUserLeft);
+    
   };
 }, []);
 
