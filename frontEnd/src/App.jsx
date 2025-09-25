@@ -64,12 +64,12 @@ const handleTyping = (e) => {
         }
         return prev;
       });
-      
+
       clearTimeout(typingTimeoutRef.current);
-      // Auto-remove after 2s
+      
       typingTimeoutRef.current = setTimeout(() => {
         setTypingUsers((prev) => prev.filter((u) => u !== user));
-      }, 2000);
+      }, 1500);
     } else {
       // If empty string, remove that user
       setTypingUsers((prev) => prev.filter((u) => u !== user));
@@ -137,17 +137,17 @@ const handleTyping = (e) => {
       }`}>
                 {msg.user === "System" ? (
         <div className="flex justify-center">
-        <div className="text-white italic text-sm bg-gray-700 px-3 py-1 rounded-lg">{msg.text}</div>
+        <div className="text-white italic text-sm bg-gray-700 px-3 py-1 break-words rounded-lg">{msg.text}</div>
         </div>
       ) : msg.user === username ? (
           <div className="flex justify-end">
-            <div className="bg-pink-600 text-white px-4 py-2 rounded-xl max-w-xs text-sm">
+            <div className="bg-pink-600 text-white px-4 py-2 rounded-xl max-w-xs break-words text-sm">
               {msg.text}
             </div>
           </div>
         ) : (
         <div className="flex justify-start">
-        <div className="bg-gray-700 text-white px-4 py-2 rounded-xl max-w-xs text-sm">
+        <div className="bg-gray-700 text-white px-4 py-2 rounded-xl max-w-xs break-words text-sm">
           <p className="text-xs font-semibold text-blue-400 mb-1">{msg.user}</p>
           {msg.text}
         </div>
