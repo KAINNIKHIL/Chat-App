@@ -64,9 +64,10 @@ const handleTyping = (e) => {
         }
         return prev;
       });
-
+      
+      clearTimeout(typingTimeoutRef.current);
       // Auto-remove after 2s
-      setTimeout(() => {
+      typingTimeoutRef.current = setTimeout(() => {
         setTypingUsers((prev) => prev.filter((u) => u !== user));
       }, 2000);
     } else {
